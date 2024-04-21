@@ -1,6 +1,7 @@
 package openrouter
 
 import (
+	"net/http"
 	"testing"
 
 	"github.com/qepo17/go-openrouter/internal/test"
@@ -18,8 +19,9 @@ func TestNew(t *testing.T) {
 			name:   "Valid API key",
 			apiKey: "valid-api-key",
 			want: &Client{
-				baseURL: baseURL,
-				apiKey:  "valid-api-key",
+				baseURL:    baseURL,
+				apiKey:     "valid-api-key",
+				httpClient: http.DefaultClient,
 			},
 			err: nil,
 		},
